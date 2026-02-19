@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LA Jewish Match</title>
-  <meta name="description" content="Apply to LA Jewish Match — a curated, community-embedded matchmaking initiative by LA Jewish Match." />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>LA Jewish Match</title>
+<meta content="Apply to LA Jewish Match — a curated, community-embedded matchmaking initiative by LA Jewish Match." name="description"/>
+<style>
     :root{
       --bg:#0b1220;
       --card:#0f1a2e;
@@ -47,7 +48,7 @@
     .brand{
       display:flex; align-items:center; gap:12px; min-width:0;
     }
-    .logo{
+    .logo{width:80px;height:80px;
       width:44px; height:44px; border-radius:12px;
       background:rgba(255,255,255,.06);
       border:1px solid var(--line);
@@ -55,7 +56,7 @@
       overflow:hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    .logo img{width:100%; height:100%; object-fit:contain; padding:6px;}
+    .logo img{padding:8px;width:100%; height:100%; object-fit:contain; padding:6px;}
     .brandtext{display:flex; flex-direction:column; min-width:0}
     .brandtext .org{font-weight:800; letter-spacing:.2px; font-size:14px; opacity:.95}
     .brandtext .sub{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
@@ -311,437 +312,407 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <div class="logo" title="LA Jewish Events Logo">
-          <!--
+<div class="wrap">
+<div class="topbar">
+<div class="brand">
+<div class="logo" title="LA Jewish Events Logo">
+<!--
             ✅ To use your real logo:
             1) Put your logo image in the same folder as this HTML file
             2) Name it: logo.png (or change the src below)
           -->
-          <img src="logo.png" alt="LA Jewish Events Logo" onerror="this.style.display='none'; this.parentElement.innerHTML = starMark();" />
-        </div>
-        <div class="brandtext">
-          <div class="org">LA Jewish Match</div>
-          <div class="sub">Internal Dating • Curated Introductions • High-trust community matching</div>
-        </div>
-      </div>
-      <div class="pill" title="Local timezone: PST">
-        <span aria-hidden="true">🕊️</span> LA Jewish Match</div>
-    </div>
-
-    <section class="hero">
-      <div class="heroGrid">
-        <div>
-          <h1>Apply for curated matching — built for real connection.</h1>
-          <p class="lede">
+<img alt="LA Jewish Events Logo" onerror="this.style.display='none'; this.parentElement.innerHTML = starMark();" src="logo.png"/>
+</div>
+<div class="brandtext">
+<div class="org">LA Jewish Match</div>
+<div class="sub">Internal Dating • Curated Introductions • High-trust community matching</div>
+</div>
+</div>
+<div class="pill" title="Local timezone: PST">
+<span aria-hidden="true">🕊️</span> LA Jewish Match</div>
+</div>
+<section class="hero">
+<div class="heroGrid">
+<div>
+<h1>Apply for curated matching — built for real connection.</h1>
+<p class="lede">
             This is a community-embedded matchmaking initiative inside LA Jewish Events.
             No swiping. No chaos. Just thoughtful, respectful introductions based on values, observance nuance, and lifestyle fit.
           </p>
-
-          <div class="badgeRow">
-            <div class="badge"><span class="dot ok"></span>Double opt-in intros</div>
-            <div class="badge"><span class="dot soft"></span>Observance-aware matching</div>
-            <div class="badge"><span class="dot star"></span>Weekly curated releases</div>
-          </div>
-        </div>
-
-        <aside class="sideCard">
-          <p class="sideTitle">How it works</p>
-          <p class="sideText">1) Apply (5–7 minutes)</p>
-          <p class="sideText">2) We review + curate</p>
-          <p class="sideText">3) You receive thoughtful intros</p>
-          <div class="callout">
-            <b>Quality &gt; quantity.</b> We’re optimizing for aligned Jewish homes, emotional maturity, and community fit.
-            <small>Tip: Answer the free-form prompts with honesty — that’s where the magic is.</small>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <form id="appForm" class="content" autocomplete="on" action="https://formsubmit.co/lajevents.inbox@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="New LA Jewish Match Application" />
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_template" value="table" />
-    <input type="hidden" name="_next" value="./?submitted=1" />
-    
-      <!-- SECTION 1 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 1 — Basic Information (Private)</h2>
-            <p>Used only for administration + introductions. Not posted publicly.</p>
-          </div>
-          <div class="step">1 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field">
-              <label for="fullName">Full Name</label>
-              <input id="fullName" name="fullName" placeholder="First + last" required />
-            </div>
-            <div class="field third">
-              <label for="age">Age</label>
-              <select id="age" name="age" required>
-                <option value="" selected disabled>Select</option>
-              </select>
-            </div>
-            <div class="field third">
-              <label for="gender">Gender</label>
-              <select id="gender" name="gender" required>
-                <option value="" selected disabled>Select</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Non-binary</option>
-                <option>Prefer not to say</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" inputmode="tel" placeholder="(###) ###-####" />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="name@email.com" required />
-            </div>
-            <div class="field">
-              <label for="neighborhood">Neighborhood</label>
-              <select id="neighborhood" name="neighborhood" required>
-                <option value="" selected disabled>Select</option>
-                <option>West LA</option>
-                <option>Beverly Grove</option>
-                <option>Pico-Robertson</option>
-                <option>Silver Lake</option>
-                <option>Downtown LA</option>
-                <option>The Valley</option>
-                <option>South Bay</option>
-                <option>Other / Outside LA</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 2 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 2 — Jewish Background &amp; Observance</h2>
-            <p>We match with nuance. You won’t be penalized for honesty — it helps us avoid mismatches.</p>
-          </div>
-          <div class="step">2 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field">
-              <label for="identify">How do you identify religiously?</label>
-              <select id="identify" name="identify" required>
-                <option value="" selected disabled>Select</option>
-                <option>Secular / Cultural</option>
-                <option>Traditional</option>
-                <option>Reform</option>
-                <option>Conservative</option>
-                <option>Modern Orthodox</option>
-                <option>Orthodox</option>
-                <option>Israeli Masorti</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="kosher">Do you keep kosher?</label>
-              <select id="kosher" name="kosher" required>
-                <option value="" selected disabled>Select</option>
-                <option>Yes, strictly</option>
-                <option>Kosher-style</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="shabbat">Do you keep Shabbat?</label>
-              <select id="shabbat" name="shabbat" required>
-                <option value="" selected disabled>Select</option>
-                <option>Fully (no driving, no phone)</option>
-                <option>Partially (family dinner, limited phone)</option>
-                <option>Cultural / Friday night dinner only</option>
-                <option>Not currently</option>
-              </select>
-            </div>
-            <div class="field wide">
-              <label for="roleJudaism">What role does Judaism play in your daily life? (2–4 sentences)</label>
-              <textarea id="roleJudaism" name="roleJudaism" placeholder="Be honest. Specific beats generic."></textarea>
-            </div>
-            <div class="field">
-              <label for="kidsJewish">Do you envision raising Jewish children?</label>
-              <select id="kidsJewish" name="kidsJewish" required>
-                <option value="" selected disabled>Select</option>
-                <option>Yes</option>
-                <option>Yes, strongly important</option>
-                <option>Open but flexible</option>
-                <option>Unsure</option>
-                <option>No</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 3 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 3 — Relationship Intentions</h2>
-            <p>This helps us keep the pool aligned — and avoid time-wasters.</p>
-          </div>
-          <div class="step">3 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field">
-              <label for="lookingFor">What are you looking for?</label>
-              <select id="lookingFor" name="lookingFor" required>
-                <option value="" selected disabled>Select</option>
-                <option>Serious relationship leading to marriage</option>
-                <option>Serious relationship, timeline flexible</option>
-                <option>Long-term partnership</option>
-                <option>Open to seeing where it goes</option>
-                <option>Casual dating</option>
-              </select>
-              <p class="hint">We typically prioritize applicants seeking serious connection.</p>
-            </div>
-            <div class="field third">
-              <label for="ageMin">Desired age min</label>
-              <input id="ageMin" name="ageMin" type="number" min="18" max="60" placeholder="e.g., 28" />
-            </div>
-            <div class="field third">
-              <label for="ageMax">Desired age max</label>
-              <input id="ageMax" name="ageMax" type="number" min="18" max="60" placeholder="e.g., 35" />
-            </div>
-            <div class="field">
-              <label for="kidsPref">Children preference</label>
-              <select id="kidsPref" name="kidsPref" required>
-                <option value="" selected disabled>Select</option>
-                <option>Definitely want</option>
-                <option>Probably want</option>
-                <option>Open</option>
-                <option>Unsure</option>
-                <option>Do not want</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="timeline">Timeline mindset</label>
-              <select id="timeline" name="timeline" required>
-                <option value="" selected disabled>Select</option>
-                <option>Ready for marriage in 1–2 years</option>
-                <option>3–5 years</option>
-                <option>No specific timeline</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 4 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 4 — Lifestyle &amp; Personality</h2>
-            <p>These are the strongest predictors of long-term compatibility.</p>
-          </div>
-          <div class="step">4 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field">
-              <label for="occupation">Occupation</label>
-              <input id="occupation" name="occupation" placeholder="What you do (and/or what you're building)" />
-            </div>
-            <div class="field">
-              <label for="career">Career orientation</label>
-              <select id="career" name="career" required>
-                <option value="" selected disabled>Select</option>
-                <option>Highly ambitious / growth focused</option>
-                <option>Balanced</option>
-                <option>Family-centered</option>
-                <option>Flexible / evolving</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="energy">Introvert or extrovert?</label>
-              <select id="energy" name="energy" required>
-                <option value="" selected disabled>Select</option>
-                <option>Strong introvert</option>
-                <option>Balanced</option>
-                <option>Strong extrovert</option>
-              </select>
-            </div>
-            <div class="field wide">
-              <label for="fridayNight">How do you typically spend a Friday night?</label>
-              <textarea id="fridayNight" name="fridayNight" placeholder="Paint the picture."></textarea>
-            </div>
-            <div class="field wide">
-              <label for="idealHome">How do you imagine your ideal Jewish home in 10 years?</label>
-              <textarea id="idealHome" name="idealHome" placeholder="This is a key question — be specific."></textarea>
-            </div>
-            <div class="field">
-              <label for="qualities">Three qualities you value most in a partner</label>
-              <input id="qualities" name="qualities" placeholder="e.g., warm, curious, family-oriented" />
-            </div>
-            <div class="field">
-              <label for="dealbreakers">Three deal breakers</label>
-              <input id="dealbreakers" name="dealbreakers" placeholder="e.g., dishonesty, inconsistency, disrespect" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 5 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 5 — Community &amp; Values</h2>
-            <p>Because this is embedded inside a real community — not an app.</p>
-          </div>
-          <div class="step">5 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field">
-              <label for="involved">How involved are you in Jewish community life?</label>
-              <select id="involved" name="involved" required>
-                <option value="" selected disabled>Select</option>
-                <option>Weekly</option>
-                <option>Monthly</option>
-                <option>Occasionally</option>
-                <option>Rarely</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="attended">Have you attended LA Jewish Events before?</label>
-              <select id="attended" name="attended" required>
-                <option value="" selected disabled>Select</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-            <div class="field wide">
-              <label for="continuity">What does “Jewish continuity” mean to you?</label>
-              <textarea id="continuity" name="continuity" placeholder="A few sentences is perfect."></textarea>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 6 -->
-      <section class="card">
-        <div class="cardHead">
-          <div>
-            <h2>SECTION 6 — Snapshot for Your Anonymous Profile</h2>
-            <p>We’ll polish this into a premium short bio (without identifying details).</p>
-          </div>
-          <div class="step">6 / 6</div>
-        </div>
-        <div class="cardBody">
-          <div class="grid">
-            <div class="field wide">
-              <label for="bestSelf">In 3–5 sentences, describe yourself at your best.</label>
-              <textarea id="bestSelf" name="bestSelf" placeholder="Warm, confident, real."></textarea>
-            </div>
-            <div class="field wide">
-              <label for="funFacts">Fun facts (3)</label>
-              <textarea id="funFacts" name="funFacts" placeholder="1) …&#10;2) …&#10;3) …"></textarea>
-            </div>
-            <div class="field wide">
-              <label for="unique">What makes you unique?</label>
-              <textarea id="unique" name="unique" placeholder="This is the detail that makes someone DM “introduce me.”"></textarea>
-            </div>
-
-            <div class="field">
-              <label for="prefObs">Observance level you prefer in a partner</label>
-              <select id="prefObs" name="prefObs" required>
-                <option value="" selected disabled>Select</option>
-                <option>Secular / Cultural</option>
-                <option>Traditional</option>
-                <option>Reform</option>
-                <option>Conservative</option>
-                <option>Modern Orthodox</option>
-                <option>Orthodox</option>
-                <option>Israeli Masorti</option>
-                <option>Flexible / depends</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="relocate">Willing to relocate for the right person?</label>
-              <select id="relocate" name="relocate" required>
-                <option value="" selected disabled>Select</option>
-                <option>Yes</option>
-                <option>No</option>
-                <option>Possibly</option>
-              </select>
-            </div>
-
-            <div class="field wide">
-              <label for="moreLess">Are you open to someone who is less/more observant than you?</label>
-              <textarea id="moreLess" name="moreLess" placeholder="Share your comfort zone and why."></textarea>
-            </div>
-
-            <div class="field wide">
-              
-<div class="field wide">
-  <label for="profilePhoto">Upload a Photo (private)</label>
-  <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required />
-  <p class="hint">This photo is used internally for matching and is not posted publicly.</p>
+<div class="badgeRow">
+<div class="badge"><span class="dot ok"></span>Double opt-in intros</div>
+<div class="badge"><span class="dot soft"></span>Observance-aware matching</div>
+<div class="badge"><span class="dot star"></span>Weekly curated releases</div>
 </div>
-
-              <div class="divider"></div>
-              <label>Consent &amp; commitment</label>
-
-              <div class="checks">
-                <label class="check">
-                  <input type="checkbox" required />
-                  <span>I understand this is a <b>curated community matchmaking</b> initiative and acceptance is not guaranteed.</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" required />
-                  <span>I agree to <b>respectful conduct</b> and to keep intros private unless both parties consent.</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" required />
-                  <span>I understand intros are done via <b>double opt-in</b> only.</span>
-                </label>
-                <label class="check">
-                  <input type="checkbox" required />
-                  <span>I agree to provide <b>brief feedback</b> after introductions (so we can improve matching quality).</span>
-                </label>
-              </div>
-
-              
-            </div>
-
-          </div>
-        </div>
-
-        <div class="actions">
-          
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" class="btn ghost" onclick="window.print()">Print</button>
-            <button type="submit" class="btn primary">Submit Application →</button>
-          </div>
-        </div>
-      </section>
-    </form>
-
-    <footer>
-      <div class="smallcaps">LA Jewish Match</div>
-      <div>Questions? Email <a href="mailto:lajevents.inbox@gmail.com">lajevents.inbox@gmail.com</a></div>
-    </footer>
-  </div>
-
-  
+</div>
+<aside class="sideCard">
+<p class="sideTitle">How it works</p>
+<p class="sideText">1) Apply (5–7 minutes)</p>
+<p class="sideText">2) We review + curate</p>
+<p class="sideText">3) You receive thoughtful intros</p>
+<div class="callout">
+<b>Quality &gt; quantity.</b> We’re optimizing for aligned Jewish homes, emotional maturity, and community fit.
+            <small>Tip: Answer the free-form prompts with honesty — that’s where the magic is.</small>
+</div>
+</aside>
+</div>
+</section>
+<form action="https://formsubmit.co/lajevents.inbox@gmail.com" autocomplete="on" class="content" enctype="multipart/form-data" id="appForm" method="POST">
+<input name="_subject" type="hidden" value="New LA Jewish Match Application"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="_next" type="hidden" value="./?submitted=1"/>
+<!-- SECTION 1 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 1 — Basic Information (Private)</h2>
+<p>Used only for administration + introductions. Not posted publicly.</p>
+</div>
+<div class="step">1 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="fullName">Full Name</label>
+<input id="fullName" name="fullName" placeholder="First + last" required=""/>
+</div>
+<div class="field third">
+<label for="age">Age</label>
+<select id="age" name="age" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option><option>50</option></select>
+</div>
+<div class="field third">
+<label for="gender">Gender</label>
+<select id="gender" name="gender" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+<option>Non-binary</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+<div class="field">
+<label for="phone">Phone Number</label>
+<input id="phone" inputmode="tel" name="phone" placeholder="(###) ###-####"/>
+</div>
+<div class="field">
+<label for="email">Email</label>
+<input id="email" name="email" placeholder="name@email.com" required="" type="email"/>
+</div>
+<div class="field">
+<label for="neighborhood">Neighborhood</label>
+<select id="neighborhood" name="neighborhood" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>West LA</option>
+<option>Beverly Grove</option>
+<option>Pico-Robertson</option>
+<option>Silver Lake</option>
+<option>Downtown LA</option>
+<option>The Valley</option>
+<option>South Bay</option>
+<option>Other / Outside LA</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 2 — Jewish Background &amp; Observance</h2>
+<p>We match with nuance. You won’t be penalized for honesty — it helps us avoid mismatches.</p>
+</div>
+<div class="step">2 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="identify">How do you identify religiously?</label>
+<select id="identify" name="identify" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Secular / Cultural</option>
+<option>Traditional</option>
+<option>Reform</option>
+<option>Conservative</option>
+<option>Modern Orthodox</option>
+<option>Orthodox</option>
+<option>Israeli Masorti</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="kosher">Do you keep kosher?</label>
+<select id="kosher" name="kosher" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes, strictly</option>
+<option>Kosher-style</option>
+<option>No</option>
+</select>
+</div>
+<div class="field">
+<label for="shabbat">Do you keep Shabbat?</label>
+<select id="shabbat" name="shabbat" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Fully (no driving, no phone)</option>
+<option>Partially (family dinner, limited phone)</option>
+<option>Cultural / Friday night dinner only</option>
+<option>Not currently</option>
+</select>
+</div>
+<div class="field wide">
+<label for="roleJudaism">What role does Judaism play in your daily life? (2–4 sentences)</label>
+<textarea id="roleJudaism" name="roleJudaism" placeholder="Be honest. Specific beats generic."></textarea>
+</div>
+<div class="field">
+<label for="kidsJewish">Do you envision raising Jewish children?</label>
+<select id="kidsJewish" name="kidsJewish" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>Yes, strongly important</option>
+<option>Open but flexible</option>
+<option>Unsure</option>
+<option>No</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 3 — Relationship Intentions</h2>
+<p>This helps us keep the pool aligned — and avoid time-wasters.</p>
+</div>
+<div class="step">3 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="lookingFor">What are you looking for?</label>
+<select id="lookingFor" name="lookingFor" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Serious relationship leading to marriage</option>
+<option>Serious relationship, timeline flexible</option>
+<option>Long-term partnership</option>
+<option>Open to seeing where it goes</option>
+<option>Casual dating</option>
+</select>
+<p class="hint">We typically prioritize applicants seeking serious connection.</p>
+</div>
+<div class="field third">
+<label for="ageMin">Desired age min</label>
+<input id="ageMin" max="60" min="18" name="ageMin" placeholder="e.g., 28" type="number"/>
+</div>
+<div class="field third">
+<label for="ageMax">Desired age max</label>
+<input id="ageMax" max="60" min="18" name="ageMax" placeholder="e.g., 35" type="number"/>
+</div>
+<div class="field">
+<label for="kidsPref">Children preference</label>
+<select id="kidsPref" name="kidsPref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Definitely want</option>
+<option>Probably want</option>
+<option>Open</option>
+<option>Unsure</option>
+<option>Do not want</option>
+</select>
+</div>
+<div class="field">
+<label for="timeline">Timeline mindset</label>
+<select id="timeline" name="timeline" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Ready for marriage in 1–2 years</option>
+<option>3–5 years</option>
+<option>No specific timeline</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 4 — Lifestyle &amp; Personality</h2>
+<p>These are the strongest predictors of long-term compatibility.</p>
+</div>
+<div class="step">4 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="occupation">Occupation</label>
+<input id="occupation" name="occupation" placeholder="What you do (and/or what you're building)"/>
+</div>
+<div class="field">
+<label for="career">Career orientation</label>
+<select id="career" name="career" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Highly ambitious / growth focused</option>
+<option>Balanced</option>
+<option>Family-centered</option>
+<option>Flexible / evolving</option>
+</select>
+</div>
+<div class="field">
+<label for="energy">Introvert or extrovert?</label>
+<select id="energy" name="energy" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Strong introvert</option>
+<option>Balanced</option>
+<option>Strong extrovert</option>
+</select>
+</div>
+<div class="field wide">
+<label for="fridayNight">How do you typically spend a Friday night?</label>
+<textarea id="fridayNight" name="fridayNight" placeholder="Paint the picture."></textarea>
+</div>
+<div class="field wide">
+<label for="idealHome">How do you imagine your ideal Jewish home in 10 years?</label>
+<textarea id="idealHome" name="idealHome" placeholder="This is a key question — be specific."></textarea>
+</div>
+<div class="field">
+<label for="qualities">Three qualities you value most in a partner</label>
+<input id="qualities" name="qualities" placeholder="e.g., warm, curious, family-oriented"/>
+</div>
+<div class="field">
+<label for="dealbreakers">Three deal breakers</label>
+<input id="dealbreakers" name="dealbreakers" placeholder="e.g., dishonesty, inconsistency, disrespect"/>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 5 — Community &amp; Values</h2>
+<p>Because this is embedded inside a real community — not an app.</p>
+</div>
+<div class="step">5 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="involved">How involved are you in Jewish community life?</label>
+<select id="involved" name="involved" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Occasionally</option>
+<option>Rarely</option>
+</select>
+</div>
+<div class="field">
+<label for="attended">Have you attended LA Jewish Events before?</label>
+<select id="attended" name="attended" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+</div>
+<div class="field wide">
+<label for="continuity">What does “Jewish continuity” mean to you?</label>
+<textarea id="continuity" name="continuity" placeholder="A few sentences is perfect."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 6 — Snapshot for Your Anonymous Profile</h2>
+<p>We’ll polish this into a premium short bio (without identifying details).</p>
+</div>
+<div class="step">6 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field wide">
+<label for="bestSelf">In 3–5 sentences, describe yourself at your best.</label>
+<textarea id="bestSelf" name="bestSelf" placeholder="Warm, confident, real."></textarea>
+</div>
+<div class="field wide">
+<label for="funFacts">Fun facts (3)</label>
+<textarea id="funFacts" name="funFacts" placeholder="1) …
+2) …
+3) …"></textarea>
+</div>
+<div class="field wide">
+<label for="unique">What makes you unique?</label>
+<textarea id="unique" name="unique" placeholder="This is the detail that makes someone DM “introduce me.”"></textarea>
+</div>
+<div class="field">
+<label for="prefObs">Observance level you prefer in a partner</label>
+<select id="prefObs" name="prefObs" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Secular / Cultural</option>
+<option>Traditional</option>
+<option>Reform</option>
+<option>Conservative</option>
+<option>Modern Orthodox</option>
+<option>Orthodox</option>
+<option>Israeli Masorti</option>
+<option>Flexible / depends</option>
+</select>
+</div>
+<div class="field">
+<label for="relocate">Willing to relocate for the right person?</label>
+<select id="relocate" name="relocate" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>No</option>
+<option>Possibly</option>
+</select>
+</div>
+<div class="field wide">
+<label for="moreLess">Are you open to someone who is less/more observant than you?</label>
+<textarea id="moreLess" name="moreLess" placeholder="Share your comfort zone and why."></textarea>
+</div>
+<div class="field wide">
+<div class="field wide"><label for="profilePhoto">Upload a Photo (private)</label><input accept="image/*" id="profilePhoto" name="profilePhoto" required="" type="file"/><p class="hint">This photo is used internally for matching and is not posted publicly.</p></div><div class="divider"></div>
+<label>Consent &amp; commitment</label>
+<div class="checks">
+<label class="check">
+<input required="" type="checkbox"/>
+<span>I understand this is a <b>curated community matchmaking</b> initiative and acceptance is not guaranteed.</span>
+</label>
+<label class="check">
+<input required="" type="checkbox"/>
+<span>I agree to <b>respectful conduct</b> and to keep intros private unless both parties consent.</span>
+</label>
+<label class="check">
+<input required="" type="checkbox"/>
+<span>I understand intros are done via <b>double opt-in</b> only.</span>
+</label>
+<label class="check">
+<input required="" type="checkbox"/>
+<span>I agree to provide <b>brief feedback</b> after introductions (so we can improve matching quality).</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="actions">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<button class="btn ghost" onclick="window.print()" type="button">Print</button>
+<button class="btn primary" type="submit">Submit Application →</button>
+</div>
+</div>
+</section>
+</form>
+<footer>
+<div class="smallcaps">LA Jewish Match</div>
+<div>Questions? Email <a href="mailto:lajevents.inbox@gmail.com">lajevents.inbox@gmail.com</a></div>
+</footer>
+</div>
 <!-- script removed: was handling local JSON download -->
-
-
 <script>
 (function(){
   try{
@@ -767,6 +738,5 @@
   }catch(e){}
 })();
 </script>
-
 </body>
 </html>
