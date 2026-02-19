@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A LA Jewish Match x Andrew Production</title>
-  <meta name="description" content="Apply to LA Jewish Match — a curated, community-embedded matchmaking initiative by LA Jewish Match x Andrew Production." />
+  <title>LA Jewish Match</title>
+  <meta name="description" content="Apply to LA Jewish Match — a curated, community-embedded matchmaking initiative by LA Jewish Match." />
   <style>
     :root{
       --bg:#0b1220;
@@ -318,17 +318,17 @@
           <!--
             ✅ To use your real logo:
             1) Put your logo image in the same folder as this HTML file
-            2) Name it: la-jewish-events-logo.png (or change the src below)
+            2) Name it: logo.png (or change the src below)
           -->
-          <img src="la-jewish-events-logo.png" alt="LA Jewish Events Logo" onerror="this.style.display='none'; this.parentElement.innerHTML = starMark();" />
+          <img src="logo.png" alt="LA Jewish Events Logo" onerror="this.style.display='none'; this.parentElement.innerHTML = starMark();" />
         </div>
         <div class="brandtext">
-          <div class="org">LA Jewish Match - Andrew Production</div>
+          <div class="org">LA Jewish Match</div>
           <div class="sub">Internal Dating • Curated Introductions • High-trust community matching</div>
         </div>
       </div>
       <div class="pill" title="Local timezone: PST">
-        <span aria-hidden="true">🕊️</span> LA Jewish Match - Andrew Production</div>
+        <span aria-hidden="true">🕊️</span> LA Jewish Match</div>
     </div>
 
     <section class="hero">
@@ -687,6 +687,13 @@
             </div>
 
             <div class="field wide">
+              
+<div class="field wide">
+  <label for="profilePhoto">Upload a Photo (private)</label>
+  <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" required />
+  <p class="hint">This photo is used internally for matching and is not posted publicly.</p>
+</div>
+
               <div class="divider"></div>
               <label>Consent &amp; commitment</label>
 
@@ -709,19 +716,14 @@
                 </label>
               </div>
 
-              <div id="toast" class="toast">
-                <b>Saved locally.</b> This demo page doesn’t submit anywhere — it will download your answers as a JSON file so you can test the flow.
-              </div>
+              
             </div>
 
           </div>
         </div>
 
         <div class="actions">
-          <div class="note">
-            <span class="smallcaps">Demo MVP</span><br/>
-            This page <b>does not</b> send data to a server. Clicking submit will download your responses as a <span class="mono">.json</span> file (easy to paste into Sheets/Airtable).
-          </div>
+          
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <button type="button" class="btn ghost" onclick="window.print()">Print</button>
             <button type="submit" class="btn primary">Submit Application →</button>
@@ -731,7 +733,7 @@
     </form>
 
     <footer>
-      <div class="smallcaps">LA Jewish Match - Andrew Production</div>
+      <div class="smallcaps">LA Jewish Match</div>
       <div>Questions? Email <a href="mailto:lajevents.inbox@gmail.com">lajevents.inbox@gmail.com</a></div>
     </footer>
   </div>
