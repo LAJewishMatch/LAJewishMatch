@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>LA Jewish Match</title>
+<meta content="Apply to LA Jewish Match — a curated, community-embedded matchmaking initiative by LA Jewish Match." name="description"/>
+<style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --card2:#0c1628;
+      --text:#e9eef9;
+      --muted:#b7c3dd;
+      --line:rgba(255,255,255,.10);
+      --brand:#7dd3fc;
+      --brand2:#c4b5fd;
+      --accent:#fbbf24;
+      --ok:#34d399;
+      --danger:#fb7185;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 980px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 480px at 18% 10%, rgba(125, 211, 252, .22), transparent 60%),
+        radial-gradient(780px 520px at 85% 12%, rgba(196, 181, 253, .18), transparent 55%),
+        radial-gradient(700px 500px at 60% 85%, rgba(251, 191, 36, .10), transparent 60%),
+        linear-gradient(180deg, #070b14 0%, var(--bg) 45%, #070b14 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:10px 0 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:0;
+    }
+    .logo{width:80px;height:80px;
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      display:grid; place-items:center;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .logo img{padding:8px;width:100%; height:100%; object-fit:contain; padding:6px;}
+    .brandtext{display:flex; flex-direction:column; min-width:0}
+    .brandtext .org{font-weight:800; letter-spacing:.2px; font-size:14px; opacity:.95}
+    .brandtext .sub{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      user-select:none;
+    }
+    .pill b{color:var(--text)}
+
+    .hero{
+      position:relative;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(450px 220px at 22% 15%, rgba(125, 211, 252, .22), transparent 60%),
+        radial-gradient(420px 240px at 78% 10%, rgba(196, 181, 253, .18), transparent 60%),
+        radial-gradient(360px 260px at 50% 110%, rgba(251, 191, 36, .10), transparent 60%);
+      z-index:0;
+      opacity: .9;
+    }
+    .hero > *{position:relative; z-index:1}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .heroGrid{grid-template-columns: 1fr;}
+    }
+
+    h1{
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -.6px;
+    }
+    .lede{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.5;
+      max-width: 65ch;
+    }
+
+    .badgeRow{display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:9px;
+      border: 1px solid var(--line);
+      background: rgba(15, 26, 46, .65);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .dot{width:10px; height:10px; border-radius:50%}
+    .dot.ok{background: var(--ok)}
+    .dot.star{background: var(--accent)}
+    .dot.soft{background: var(--brand2)}
+
+    .sideCard{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(10, 18, 34, .55);
+      padding: 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .sideTitle{font-weight:800; margin: 0 0 6px; font-size: 13px;}
+    .sideText{margin:0; color: var(--muted); font-size:12.5px; line-height:1.45}
+    .callout{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(125, 211, 252, .25);
+      background: linear-gradient(180deg, rgba(125, 211, 252, .12), rgba(255,255,255,.03));
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .callout b{color: var(--text)}
+    .callout small{display:block; margin-top:6px; opacity:.9}
+
+    .content{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(15, 26, 46, .58);
+      border-radius: var(--radius2);
+      box-shadow: 0 14px 50px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .cardHead{
+      padding: 16px 18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-bottom: 1px solid var(--line);
+    }
+    .cardHead h2{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: -.2px;
+    }
+    .cardHead p{margin:4px 0 0; color: var(--muted); font-size: 12.5px; line-height:1.35}
+    .step{
+      flex:0 0 auto;
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 7px 10px;
+      border-radius: 999px;
+      user-select:none;
+    }
+
+    .cardBody{padding: 14px 18px 18px;}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .field{grid-column: span 6;}
+    .field.wide{grid-column: span 12;}
+    .field.third{grid-column: span 4;}
+    .field.twothird{grid-column: span 8;}
+    @media (max-width: 720px){
+      .field,.field.third,.field.twothird{grid-column: span 12;}
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 7px;
+    }
+    input, select, textarea{
+      width:100%;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(8, 13, 24, .65);
+      color: var(--text);
+      outline: none;
+      font-size: 13.5px;
+      transition: border-color .15s ease, transform .08s ease;
+    }
+    input::placeholder, textarea::placeholder{color: rgba(183,195,221,.65)}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(125, 211, 252, .55);
+      box-shadow: 0 0 0 4px rgba(125, 211, 252, .12);
+    }
+    textarea{min-height: 105px; resize: vertical;}
+
+    .hint{margin: 6px 0 0; color: rgba(183,195,221,.82); font-size: 11.5px; line-height:1.35}
+    .divider{
+      height:1px; background: var(--line);
+      margin: 14px 0;
+    }
+
+    .checks{display:grid; gap:10px; margin-top:10px}
+    .check{
+      display:flex; align-items:flex-start; gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(8, 13, 24, .50);
+    }
+    .check input{width:18px; height:18px; margin-top:2px}
+    .check span{color: var(--muted); font-size:12.5px; line-height:1.35}
+    .check span b{color:var(--text)}
+
+    .actions{
+      display:flex; flex-wrap:wrap;
+      gap:12px; align-items:center; justify-content:space-between;
+      margin-top: 14px;
+      padding: 14px 18px 18px;
+      border-top: 1px solid var(--line);
+      background: rgba(10, 18, 34, .45);
+    }
+    .btn{
+      border: 0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 800;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition: transform .08s ease, box-shadow .15s ease, opacity .15s ease;
+      display:inline-flex; align-items:center; gap:10px;
+      user-select:none;
+    }
+    .btn:active{transform: translateY(1px)}
+    .primary{
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(196,181,253,.92));
+      color:#0b1220;
+      box-shadow: 0 18px 40px rgba(125,211,252,.18);
+    }
+    .ghost{
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border:1px solid var(--line);
+    }
+    .note{
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.4;
+      max-width: 70ch;
+    }
+
+    .toast{
+      display:none;
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(52,211,153,.25);
+      background: linear-gradient(180deg, rgba(52,211,153,.12), rgba(255,255,255,.03));
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .toast b{color:var(--text)}
+    footer{
+      margin-top: 18px;
+      color: rgba(183,195,221,.72);
+      font-size: 11.5px;
+      text-align:center;
+      line-height:1.5;
+    }
+    .smallcaps{letter-spacing:.18em; text-transform:uppercase; font-size: 10.5px; opacity:.9}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+  
+    /* --- Enhancements (2026-02) --- */
+    .topProgress{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 10px 14px;
+      margin: 0 auto 14px;
+      max-width: 980px;
+      border: 1px solid var(--line);
+      background: rgba(11,18,32,.78);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+    }
+    .topProgressRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:8px;
+    }
+    .topProgressRow .meta{
+      font-size: 13px;
+      color: var(--muted);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .pill a{ color: rgba(255,255,255,.88); text-decoration: underline; text-underline-offset: 2px; }
+    .bar{
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(125,211,252,.9), rgba(34,197,94,.85));
+      transition: width .25s ease;
+    }
+    .inlineWarn{
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(251,191,36,.25);
+      background: rgba(251,191,36,.10);
+      color: rgba(255,255,255,.90);
+      font-size: 13px;
+      display:none;
+    }
+    .btn.ghost.small{
+      padding: 10px 12px;
+      font-size: 13px;
+      opacity: .78;
+    }
+    .hint strong{ color: rgba(255,255,255,.92); }
+
+
+    /* --- Success screen --- */
+    .successWrap{
+      display:none;
+      max-width: var(--max);
+      margin: 18px auto 0;
+      padding: 0 0 18px;
+    }
+    .successCard{
+      border: 1px solid var(--line);
+      background: rgba(15, 26, 46, .62);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .successHead{
+      padding: 18px 18px 14px;
+      background: linear-gradient(180deg, rgba(52,211,153,.14), rgba(125,211,252,.10));
+      border-bottom: 1px solid var(--line);
+    }
+    .successHead h2{ margin:0; font-size: 22px; letter-spacing:.2px}
+    .successHead p{ margin:8px 0 0; color: rgba(183,195,221,.92); line-height:1.45}
+    .successHead b{ color: rgba(255,255,255,.92) }
+    .successBody{ padding: 16px 18px 18px; }
+    .nextSteps{ display:grid; gap:10px; margin-top: 10px; }
+    .stepItem{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 16px;
+      padding: 12px 12px;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .stepNum{
+      width:26px; height:26px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.88);
+      font-weight:900;
+      flex:0 0 auto;
+    }
+    .stepText b{ color: rgba(255,255,255,.94) }
+    .successActions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+<div class="brand">
+<div class="logo" title="LA Jewish Events Logo">
+<!--
+            ✅ To use your real logo:
+            1) Put your logo image in the same folder as this HTML file
+            2) Name it: logo.png (or change the src below)
+          -->
+<img alt="LA Jewish Events Logo" onerror="this.style.display='none'; this.parentElement.innerHTML = starMark();" src="logo.png"/>
+</div>
+<div class="brandtext">
+<div class="org">LA Jewish Match</div>
+<div class="sub">Internal Dating • Curated Introductions • High-trust community matching</div>
+</div>
+</div>
+<div class="pill" title="Local timezone: PST">
+<span aria-hidden="true">🕊️</span> LA Jewish Match</div>
+</div>
+<section class="hero">
+<div class="heroGrid">
+<div>
+<h1>Apply for curated matching — built for real connection.</h1>
+<p class="lede">
+            This is a community-embedded matchmaking initiative inside LA Jewish Events.
+            No swiping. No chaos. Just thoughtful, respectful introductions based on values, observance nuance, and lifestyle fit.
+          </p>
+<div class="badgeRow">
+<div class="badge"><span class="dot ok"></span>Double opt-in intros</div>
+<div class="badge"><span class="dot soft"></span>Observance-aware matching</div>
+<div class="badge"><span class="dot star"></span>Weekly curated releases</div>
+</div>
+</div>
+<aside class="sideCard">
+<p class="sideTitle">How it works</p>
+<p class="sideText">1) Apply (5–7 minutes)</p>
+<p class="sideText">2) We review + curate</p>
+<p class="sideText">3) You receive thoughtful intros</p>
+<div class="callout">
+<b>Quality &gt; quantity.</b> We’re optimizing for aligned Jewish homes, emotional maturity, and community fit.
+            <small>Tip: Answer the free-form prompts with honesty — that’s where the magic is.</small>
+</div>
+</aside>
+</div>
+</section>
+<form action="https://formsubmit.co/lajevents.inbox@gmail.com" autocomplete="on" class="content" enctype="multipart/form-data" id="appForm" method="POST">
+<input name="_subject" type="hidden" value="New LA Jewish Match Application"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="_next" type="hidden" value="./?submitted=1"/>
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+<input type="hidden" name="source" id="sourceField" value=""/>
+<input type="hidden" name="submittedAt" id="submittedAtField" value=""/>
+<input type="hidden" name="userAgent" id="userAgentField" value=""/>
+
+<div class="topProgress" id="topProgress" aria-live="polite">
+  <div class="topProgressRow">
+    <div class="meta">
+      <span class="pill"><b id="pctDone">0%</b> complete</span>
+      <span class="pill">≈ <b id="timeLeft">4</b> min left</span>
+      <span class="pill" id="savePill" style="display:none;">Saved locally ✓</span>
+    </div>
+    <div class="meta">
+      <span class="pill"><a href="#" id="clearSaved">Clear saved</a></span>
+    </div>
+  </div>
+  <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div id="barFill"></div>
+  </div>
+  <div class="inlineWarn" id="ageWarn">Heads up: your desired age <b>min</b> is greater than your <b>max</b>. Please adjust.</div>
+</div>
+
+<!-- SECTION 1 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 1 — Basic Information (Private)</h2>
+<p>Used only for administration + introductions. Not posted publicly.</p>
+</div>
+<div class="step">1 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="fullName">Full Name</label>
+<input id="fullName" name="fullName" placeholder="First + last" required=""/>
+</div>
+<div class="field third">
+<label for="age">Age</label>
+<select id="age" name="age" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option><option>50</option></select>
+</div>
+<div class="field third">
+<label for="gender">Gender</label>
+<select id="gender" name="gender" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+<option>Non-binary</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+
+<div class="field third">
+<label for="relationshipStatus">Relationship status</label>
+<select id="relationshipStatus" name="relationshipStatus" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Single</option>
+<option>Recently single</option>
+<option>Separated / in process</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+<div class="field third">
+<label for="contactPref">Preferred contact</label>
+<select id="contactPref" name="contactPref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Text</option>
+<option>WhatsApp</option>
+<option>Email</option>
+</select>
+</div>
+<div class="field third">
+<label for="contactTime">Best time to reach you</label>
+<select id="contactTime" name="contactTime" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Mornings</option>
+<option>Afternoons</option>
+<option>Evenings</option>
+<option>Weekends</option>
+<option>Anytime</option>
+</select>
+</div>
+<div class="field">
+<label for="phone">Phone Number</label>
+<input id="phone" inputmode="tel" name="phone" placeholder="(###) ###-####" required=""/>
+<p class="hint">We only use your phone to coordinate intros + confirmations. No spam.</p>
+</div>
+<div class="field">
+<label for="email">Email</label>
+<input id="email" name="email" placeholder="name@email.com" required="" type="email"/>
+</div>
+<div class="field">
+<label for="neighborhood">Neighborhood</label>
+<select id="neighborhood" name="neighborhood" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>West LA</option>
+<option>Beverly Grove</option>
+<option>Pico-Robertson</option>
+<option>Silver Lake</option>
+<option>Downtown LA</option>
+<option>The Valley</option>
+<option>South Bay</option>
+<option>Other / Outside LA</option>
+</select>
+</div>
+<div class="field wide">
+<label for="yourType">In 2–3 sentences, who are you most excited to meet?</label>
+<textarea id="yourType" name="yourType" placeholder="Be specific: values, vibe, lifestyle, and what you’re building together." required="" minlength="40"></textarea>
+<p class="hint"><strong>High-signal.</strong> This is one of the most important fields for matching.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 2 — Jewish Background &amp; Observance</h2>
+<p>We match with nuance. You won’t be penalized for honesty — it helps us avoid mismatches.</p>
+</div>
+<div class="step">2 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="identify">How do you identify religiously?</label>
+<select id="identify" name="identify" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Secular / Cultural</option>
+<option>Traditional</option>
+<option>Reform</option>
+<option>Conservative</option>
+<option>Modern Orthodox</option>
+<option>Orthodox</option>
+<option>Israeli Masorti</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="kosher">Do you keep kosher?</label>
+<select id="kosher" name="kosher" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes, strictly</option>
+<option>Kosher-style</option>
+<option>No</option>
+</select>
+</div>
+<div class="field">
+<label for="shabbat">Do you keep Shabbat?</label>
+<select id="shabbat" name="shabbat" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Fully (no driving, no phone)</option>
+<option>Partially (family dinner, limited phone)</option>
+<option>Cultural / Friday night dinner only</option>
+<option>Not currently</option>
+</select>
+</div>
+<div class="field wide">
+<label for="roleJudaism">What role does Judaism play in your daily life? (2–4 sentences)</label>
+<textarea id="roleJudaism" name="roleJudaism" placeholder="Be honest. Specific beats generic."></textarea>
+</div>
+<div class="field">
+<label for="kidsJewish">Do you envision raising Jewish children?</label>
+<select id="kidsJewish" name="kidsJewish" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>Yes, strongly important</option>
+<option>Open but flexible</option>
+<option>Unsure</option>
+<option>No</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 3 — Relationship Intentions</h2>
+<p>This helps us keep the pool aligned — and avoid time-wasters.</p>
+</div>
+<div class="step">3 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="lookingFor">What are you looking for?</label>
+<select id="lookingFor" name="lookingFor" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Serious relationship leading to marriage</option>
+<option>Serious relationship, timeline flexible</option>
+<option>Long-term partnership</option>
+<option>Open to seeing where it goes</option>
+<option>Casual dating</option>
+</select>
+<p class="hint">We typically prioritize applicants seeking serious connection.</p>
+</div>
+<div class="field third">
+<label for="ageMin">Desired age min</label>
+<input id="ageMin" max="60" min="18" name="ageMin" placeholder="e.g., 28" type="number"/>
+</div>
+<div class="field third">
+<label for="ageMax">Desired age max</label>
+<input id="ageMax" max="60" min="18" name="ageMax" placeholder="e.g., 35" type="number"/>
+</div>
+<div class="field">
+<label for="kidsPref">Children preference</label>
+<select id="kidsPref" name="kidsPref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Definitely want</option>
+<option>Probably want</option>
+<option>Open</option>
+<option>Unsure</option>
+<option>Do not want</option>
+</select>
+</div>
+<div class="field third">
+<label for="drinkPref">Alcohol</label>
+<select id="drinkPref" name="drinkPref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Don’t drink</option>
+<option>Social drinker</option>
+<option>Regular drinker</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+<div class="field third">
+<label for="smokePref">Smoking</label>
+<select id="smokePref" name="smokePref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Non-smoker</option>
+<option>Occasionally</option>
+<option>Regularly</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+<div class="field third">
+<label for="weedPref">420 / cannabis</label>
+<select id="weedPref" name="weedPref" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>No</option>
+<option>Occasionally</option>
+<option>Yes</option>
+<option>Prefer not to say</option>
+</select>
+</div>
+<div class="field third">
+<label for="heightPref">Height preference (optional)</label>
+<input id="heightPref" name="heightPref" placeholder="e.g., 5'10+ or no preference"/>
+</div>
+
+<div class="field">
+<label for="timeline">Timeline mindset</label>
+<select id="timeline" name="timeline" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Ready for marriage in 1–2 years</option>
+<option>3–5 years</option>
+<option>No specific timeline</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 4 — Lifestyle &amp; Personality</h2>
+<p>These are the strongest predictors of long-term compatibility.</p>
+</div>
+<div class="step">4 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="occupation">Occupation</label>
+<input id="occupation" name="occupation" placeholder="What you do (and/or what you're building)"/>
+</div>
+<div class="field">
+<label for="career">Career orientation</label>
+<select id="career" name="career" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Highly ambitious / growth focused</option>
+<option>Balanced</option>
+<option>Family-centered</option>
+<option>Flexible / evolving</option>
+</select>
+</div>
+<div class="field">
+<label for="energy">Introvert or extrovert?</label>
+<select id="energy" name="energy" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Strong introvert</option>
+<option>Balanced</option>
+<option>Strong extrovert</option>
+</select>
+</div>
+<div class="field wide">
+<label for="fridayNight">How do you typically spend a Friday night?</label>
+<textarea id="fridayNight" name="fridayNight" placeholder="Paint the picture."></textarea>
+</div>
+<div class="field wide">
+<label for="idealHome">How do you imagine your ideal Jewish home in 10 years?</label>
+<textarea id="idealHome" name="idealHome" placeholder="This is a key question — be specific." required="" minlength="40"></textarea>
+</div>
+<div class="field">
+<label for="qualities">Three qualities you value most in a partner</label>
+<input id="qualities" name="qualities" placeholder="e.g., warm, curious, family-oriented"/>
+</div>
+<div class="field">
+<label for="dealbreakers">Three deal breakers</label>
+<input id="dealbreakers" name="dealbreakers" placeholder="e.g., dishonesty, inconsistency, disrespect"/>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 5 — Community &amp; Values</h2>
+<p>Because this is embedded inside a real community — not an app.</p>
+</div>
+<div class="step">5 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field">
+<label for="involved">How involved are you in Jewish community life?</label>
+<select id="involved" name="involved" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Weekly</option>
+<option>Monthly</option>
+<option>Occasionally</option>
+<option>Rarely</option>
+</select>
+</div>
+<div class="field">
+<label for="attended">Have you attended LA Jewish Events before?</label>
+<select id="attended" name="attended" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+</div>
+<div class="field wide">
+<label for="continuity">What does “Jewish continuity” mean to you?</label>
+<textarea id="continuity" name="continuity" placeholder="A few sentences is perfect."></textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6 -->
+<section class="card">
+<div class="cardHead">
+<div>
+<h2>SECTION 6 — Snapshot for Your Anonymous Profile</h2>
+<p>We’ll polish this into a premium short bio (without identifying details).</p>
+</div>
+<div class="step">6 / 6</div>
+</div>
+<div class="cardBody">
+<div class="grid">
+<div class="field wide">
+<label for="bestSelf">In 3–5 sentences, describe yourself at your best.</label>
+<textarea id="bestSelf" name="bestSelf" placeholder="Warm, confident, real." required="" minlength="30"></textarea>
+</div>
+<div class="field wide">
+<label for="funFacts">Fun facts (3)</label>
+<textarea id="funFacts" name="funFacts" placeholder="1) …
+2) …
+3) …"></textarea>
+</div>
+<div class="field wide">
+<label for="unique">What makes you unique?</label>
+<textarea id="unique" name="unique" placeholder="This is the detail that makes someone DM “introduce me.”"></textarea>
+</div>
+<div class="field">
+<label for="prefObs">Observance level you prefer in a partner</label>
+<select id="prefObs" name="prefObs" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Secular / Cultural</option>
+<option>Traditional</option>
+<option>Reform</option>
+<option>Conservative</option>
+<option>Modern Orthodox</option>
+<option>Orthodox</option>
+<option>Israeli Masorti</option>
+<option>Flexible / depends</option>
+</select>
+</div>
+<div class="field">
+<label for="relocate">Willing to relocate for the right person?</label>
+<select id="relocate" name="relocate" required="">
+<option disabled="" selected="" value="">Select</option>
+<option>Yes</option>
+<option>No</option>
+<option>Possibly</option>
+</select>
+</div>
+<div class="field wide">
+<label for="moreLess">Are you open to someone who is less/more observant than you?</label>
+<textarea id="moreLess" name="moreLess" placeholder="Share your comfort zone and why."></textarea>
+</div>
+<div class="field wide">
+<label for="profilePhoto">Upload a Photo (private)</label><input accept="image/*" id="profilePhoto" name="profilePhoto" type="file"/>
+<p class="hint">Uploads can be finicky on some phones/browsers. If your upload fails, use the link field below.</p>
+<div class="divider"></div>
+<div class="grid" style="margin-top:10px;">
+  <div class="field wide">
+    <label for="photoLink">Photo link (required if upload fails)</label>
+    <input id="photoLink" name="photoLink" type="url" placeholder="Google Drive / iCloud / Dropbox link (set to view)" />
+    <p class="hint"><strong>Tip:</strong> Make sure the link is set to “Anyone with the link can view”.</p>
+  </div>
+</div><div class="divider"></div>
+<label>Consent &amp; commitment</label>
+<div class="checks">
+<label class="check">
+<input type="checkbox" name="consent_curated" value="Yes" required=""/>
+<span>I understand this is a <b>curated community matchmaking</b> initiative and acceptance is not guaranteed.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="confirm_single_self" value="Yes" required=""/>
+<span>I confirm I’m <b>single</b> and applying <b>for myself</b>.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="no_sharing" value="Yes" required=""/>
+<span>I agree <b>not</b> to share anyone’s profile or photo without explicit consent.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="consent_conduct" value="Yes" required=""/>
+<span>I agree to <b>respectful conduct</b> and to keep intros private unless both parties consent.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="consent_double_opt_in" value="Yes" required=""/>
+<span>I understand intros are done via <b>double opt-in</b> only.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="consent_feedback" value="Yes" required=""/>
+<span>I agree to provide <b>brief feedback</b> after introductions (so we can improve matching quality).</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="actions">
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<button class="btn ghost small" onclick="window.print()" type="button">Print (optional)</button>
+<button class="btn primary" type="submit">Submit Application →</button>
+</div>
+</div>
+</section>
+</form>
+
+<div class="successWrap" id="successWrap">
+  <div class="successCard">
+    <div class="successHead">
+      <h2>You're in ✅</h2>
+      <p>We received your LA Jewish Match application.</p>
+      <p style="margin-top:8px;"><b>Within 24 hours</b> you’ll receive a confirmation message to confirm receipt of your application — and possible acceptance into the program.</p>
+    </div>
+    <div class="successBody">
+      <div class="nextSteps">
+        <div class="stepItem">
+          <div class="stepNum">1</div>
+          <div class="stepText"><b>Double opt‑in only:</b> we’ll suggest a match. If both say yes, we connect you.</div>
+        </div>
+        <div class="stepItem">
+          <div class="stepNum">2</div>
+          <div class="stepText"><b>Expectations:</b> this is curated (not an app). We prioritize respectful conduct and community fit.</div>
+        </div>
+        <div class="stepItem">
+          <div class="stepNum">3</div>
+          <div class="stepText"><b>Keep an eye out:</b> check your spam folder and make sure your phone number is correct.</div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:14px;">
+        <b>Want to support LA Jewish Match?</b><br/>
+        If this program matters to you, please consider a small donation to help us keep it running and expand matching capacity.
+      </div>
+
+      <div class="successActions">
+        <a class="btn primary" href="https://buy.stripe.com/aFa5kv5hQfmR2r8cxf8og00" target="_blank" rel="noopener" style="text-decoration:none;">Donate via Stripe →</a>
+        <a class="btn ghost" href="./" style="text-decoration:none;">Back to form</a>
+      </div>
+
+      <p class="note" style="margin-top:12px;">
+        Thank you for keeping this high‑trust: please don’t share anyone’s info or photo without explicit consent.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+<div class="smallcaps">LA Jewish Match</div>
+<div>Questions? Email <a href="mailto:lajevents.inbox@gmail.com">lajevents.inbox@gmail.com</a></div>
+</footer>
+</div>
+<!-- script removed: was handling local JSON download -->
+
+<script>
+(function(){
+  try{
+    var p = new URLSearchParams(window.location.search);
+    if(p.get('submitted') === '1'){
+      var form = document.getElementById('appForm');
+      var success = document.getElementById('successWrap');
+      var topProg = document.getElementById('topProgress');
+      if(form) form.style.display = 'none';
+      if(topProg) topProg.style.display = 'none';
+      if(success) success.style.display = 'block';
+      try{ localStorage.removeItem('laj_match_autosave_v1'); }catch(e){}
+      history.replaceState({}, document.title, window.location.pathname);
+      return;
+    }
+  }catch(e){}
+
+  var form = document.getElementById('appForm');
+  if(!form) return;
+
+  try{
+    var qs = new URLSearchParams(window.location.search);
+    var src = qs.get('src') || qs.get('source') || document.referrer || '';
+    var sEl = document.getElementById('sourceField');
+    if(sEl) sEl.value = src;
+    var tEl = document.getElementById('submittedAtField');
+    if(tEl) tEl.value = new Date().toISOString();
+    var uaEl = document.getElementById('userAgentField');
+    if(uaEl) uaEl.value = navigator.userAgent || '';
+  }catch(e){}
+
+  var SAVE_KEY = 'laj_match_autosave_v1';
+  var savePill = document.getElementById('savePill');
+  var clearLink = document.getElementById('clearSaved');
+
+  function serializeForm(){
+    var data = {};
+    var els = form.querySelectorAll('input, select, textarea');
+    els.forEach(function(el){
+      if(!el.name) return;
+      if(el.type === 'file') return;
+      if(el.type === 'checkbox'){
+        data[el.name] = el.checked ? (el.value || 'Yes') : '';
+        return;
+      }
+      data[el.name] = el.value || '';
+    });
+    return data;
+  }
+
+  function restoreForm(){
+    try{
+      var raw = localStorage.getItem(SAVE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      var els = form.querySelectorAll('input, select, textarea');
+      els.forEach(function(el){
+        if(!el.name) return;
+        if(el.type === 'file') return;
+        if(!(el.name in data)) return;
+        if(el.type === 'checkbox'){
+          el.checked = !!data[el.name];
+          return;
+        }
+        el.value = data[el.name];
+      });
+      if(savePill) savePill.style.display = 'inline-flex';
+    }catch(e){}
+  }
+
+  var saveTimer = null;
+  function scheduleSave(){
+    if(saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      try{
+        localStorage.setItem(SAVE_KEY, JSON.stringify(serializeForm()));
+        if(savePill) savePill.style.display = 'inline-flex';
+      }catch(e){}
+      updateProgress();
+    }, 180);
+  }
+
+  if(clearLink){
+    clearLink.addEventListener('click', function(ev){
+      ev.preventDefault();
+      try{ localStorage.removeItem(SAVE_KEY); }catch(e){}
+      if(savePill) savePill.style.display = 'none';
+      alert('Saved draft cleared.');
+    });
+  }
+
+  restoreForm();
+  form.addEventListener('input', scheduleSave);
+  form.addEventListener('change', scheduleSave);
+
+  var ageMin = document.getElementById('ageMin');
+  var ageMax = document.getElementById('ageMax');
+  var ageWarn = document.getElementById('ageWarn');
+  function validateAges(){
+    if(!ageMin || !ageMax) return true;
+    var a = parseInt(ageMin.value, 10);
+    var b = parseInt(ageMax.value, 10);
+    var ok = true;
+    if(!isNaN(a) && !isNaN(b) && a > b) ok = false;
+    if(ageWarn) ageWarn.style.display = ok ? 'none' : 'block';
+    return ok;
+  }
+
+  var photoFile = document.getElementById('profilePhoto');
+  var photoLink = document.getElementById('photoLink');
+  function validatePhoto(){
+    if(!photoFile || !photoLink) return true;
+    var hasFile = photoFile.files && photoFile.files.length > 0;
+    if(!hasFile){
+      photoLink.setAttribute('required','');
+    }else{
+      photoLink.removeAttribute('required');
+    }
+    return true;
+  }
+
+  var pctEl = document.getElementById('pctDone');
+  var timeEl = document.getElementById('timeLeft');
+  var barFill = document.getElementById('barFill');
+  var bar = document.querySelector('.bar[role="progressbar"]');
+
+  function requiredElements(){
+    return Array.from(form.querySelectorAll('[required]')).filter(function(el){
+      var n = (el.getAttribute('name') || '').trim();
+      if(!n) return false;
+      if(n.startsWith('_')) return false;
+      if(n === '_honey') return false;
+      return true;
+    });
+  }
+
+  function isFilled(el){
+    if(el.type === 'checkbox') return el.checked;
+    if(el.tagName === 'SELECT') return !!el.value;
+    if(el.type === 'file') return el.files && el.files.length > 0;
+    var v = (el.value || '').trim();
+    if(!v) return false;
+    var min = el.getAttribute('minlength');
+    if(min && v.length < parseInt(min,10)) return false;
+    return true;
+  }
+
+  function updateProgress(){
+    validateAges();
+    validatePhoto();
+
+    var req = requiredElements();
+    var total = req.length || 1;
+    var done = req.reduce(function(acc, el){ return acc + (isFilled(el) ? 1 : 0); }, 0);
+    var pct = Math.round((done/total)*100);
+
+    if(pctEl) pctEl.textContent = pct + '%';
+    if(barFill) barFill.style.width = pct + '%';
+    if(bar) bar.setAttribute('aria-valuenow', String(pct));
+
+    var remaining = Math.max(0, total - done);
+    var minutes = Math.max(1, Math.round((remaining * 20) / 60));
+    if(timeEl) timeEl.textContent = minutes;
+  }
+
+  updateProgress();
+
+  form.addEventListener('submit', function(ev){
+    var ok = validateAges();
+    validatePhoto();
+    if(!ok){
+      ev.preventDefault();
+      ageWarn && ageWarn.scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+    try{
+      var tEl = document.getElementById('submittedAtField');
+      if(tEl) tEl.value = new Date().toISOString();
+    }catch(e){}
+  });
+})();
+</script>
+
+</body>
+</html>
