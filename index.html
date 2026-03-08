@@ -1173,5 +1173,296 @@
 })();
 </script>
 
+
+<!-- ====================== LA JEWISH MATCH: POST-SUBMIT 3-SCREEN CONFIRMATION FLOW (V3 EXACT WORDING) ====================== -->
+<style>
+  .lajm-flow-wrap{position:relative;max-width:980px;margin:0 auto;padding:22px 16px 60px;}
+  .lajm-flow-card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    padding:20px 18px;
+    box-shadow:0 18px 48px rgba(0,0,0,.35);
+    backdrop-filter: blur(10px);
+  }
+  .lajm-flow-title{font-size:22px;font-weight:750;letter-spacing:.2px;margin:0 0 12px}
+  .lajm-flow-sub{opacity:.86;line-height:1.55;margin:0 0 14px}
+  .lajm-steps{
+    margin:14px 0 18px;padding:14px 14px 12px;border-radius:14px;
+    background:rgba(15, 23, 42, .55); border:1px solid rgba(255,255,255,.10);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size:13px; line-height:1.6; color:rgba(255,255,255,.88);
+  }
+  .lajm-step-line{display:flex;gap:10px;align-items:center}
+  .lajm-step-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);flex:0 0 auto}
+  .lajm-step-dot.done{background:rgba(34,197,94,.95)}
+  .lajm-step-dot.active{background:rgba(125,211,252,.95)}
+  .lajm-kicker{display:inline-flex;align-items:center;gap:8px;
+    padding:7px 10px;border-radius:999px;background:rgba(59,130,246,.14);
+    border:1px solid rgba(59,130,246,.30); font-size:12px; opacity:.95; margin-bottom:12px;
+  }
+  .lajm-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .lajm-btn{
+    appearance:none;border:0;cursor:pointer;
+    padding:11px 14px;border-radius:12px;font-weight:700;
+    transition: transform .12s ease, opacity .12s ease, box-shadow .12s ease;
+  }
+  .lajm-btn:active{transform:translateY(1px)}
+  .lajm-btn-primary{
+    background:linear-gradient(135deg,#7dd3fc,#c4b5fd);
+    color:#08101e; box-shadow:0 14px 30px rgba(125,211,252,.22);
+  }
+  .lajm-btn-ghost{
+    background:rgba(255,255,255,.08);
+    color:rgba(255,255,255,.92);
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .lajm-muted{opacity:.78}
+  .lajm-toast{
+    position:fixed;left:50%;transform:translateX(-50%);
+    bottom:18px;z-index:9999;
+    background:rgba(15,23,42,.92);border:1px solid rgba(255,255,255,.14);
+    padding:10px 12px;border-radius:12px;color:rgba(255,255,255,.92);
+    box-shadow:0 18px 44px rgba(0,0,0,.45);
+    display:none;font-size:13px;
+  }
+  .lajm-screen{display:none}
+  .lajm-screen.active{display:block}
+  /* Payment modal */
+  .lajm-modal{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:18px}
+  .lajm-modal-card{
+    width:100%;max-width:520px;
+    background:#0f1a2e;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;
+    padding:18px 16px;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);
+  }
+  .lajm-modal-title{margin:0 0 6px;font-size:18px;font-weight:800}
+  .lajm-modal-sub{margin:0 0 12px;opacity:.85;line-height:1.55}
+  .lajm-paybox{
+    background:rgba(17,24,39,.72);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;
+    padding:12px;
+    margin:10px 0 12px;
+  }
+  .lajm-payline{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .lajm-copy{
+    background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);
+    color:rgba(255,255,255,.92);
+    padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;
+    text-decoration:none; display:inline-block;
+  }
+</style>
+
+<div id="lajmToast" class="lajm-toast">Copied.</div>
+
+<div id="lajmPayModal" class="lajm-modal" aria-hidden="true">
+  <div class="lajm-modal-card" role="dialog" aria-modal="true" aria-label="Payment options">
+    <div class="lajm-kicker">Confirm Your Profile</div>
+    <h3 class="lajm-modal-title">Confirm with the $18 application confirmation fee</h3>
+    <p class="lajm-modal-sub">Choose your payment method below.</p>
+
+    <div class="lajm-paybox">
+      <div class="lajm-payline">
+        <div>
+          <div style="font-weight:800">Confirm via Zelle</div>
+          <div class="lajm-muted">Send <b>$18</b> to <b id="lajmZelleEmail">Adlewis1606@gmail.com</b></div>
+        </div>
+        <button class="lajm-copy" id="lajmCopyZelle">Copy Zelle</button>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,.10);margin:12px 0"></div>
+      <div class="lajm-payline">
+        <div>
+          <div style="font-weight:800">Pay via Stripe</div>
+          <div class="lajm-muted">Open the Stripe payment page.</div>
+        </div>
+        <a id="lajmStripeBtn" class="lajm-copy" href="https://buy.stripe.com/14A00i7X0b0E6763ri3Ru00" target="_blank" rel="noopener">Open Stripe</a>
+      </div>
+    </div>
+
+    <div class="lajm-actions" style="margin-top:0">
+      <button class="lajm-btn lajMBtn lajm-btn-primary" id="lajmPaidContinue">Activate Profile →</button>
+      <button class="lajm-btn lajMBtn lajm-btn-ghost" id="lajmCloseModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const isSubmitted = params.get("submitted") === "1" || params.get("submitted") === "true";
+  if(!isSubmitted) return;
+
+  const form = document.querySelector("form");
+  if(form) form.style.display = "none";
+
+  ["#success","#submitted",".success",".submitted",".confirmation",".thanks"].forEach(sel=>{
+    const n = document.querySelector(sel);
+    if(n) n.style.display="none";
+  });
+
+  const wrap = document.createElement("div");
+  wrap.className = "lajm-flow-wrap";
+  wrap.innerHTML = `
+    <div class="lajm-flow-card">
+      <div class="lajm-kicker">✅ Submitted • LA Jewish Match</div>
+
+      <!-- Screen 1 exact wording -->
+      <div id="lajmScreen1" class="lajm-screen active">
+        <h2 class="lajm-flow-title">You’re In — Application Received</h2>
+        <p class="lajm-flow-sub">
+          Your profile has been submitted to the <b>LA Jewish Match</b> applicant pool.
+          <br><br>
+          Because we curate matches carefully, each application must be confirmed before entering the active matching queue.
+        </p>
+
+        <div class="lajm-steps">
+          <div class="lajm-step-line"><span class="lajm-step-dot done"></span><span><b>Step 1 ✓</b> Application submitted</span></div>
+          <div class="lajm-step-line"><span class="lajm-step-dot active"></span><span><b>Step 2 →</b> Confirm profile</span></div>
+          <div class="lajm-step-line"><span class="lajm-step-dot"></span><span><b>Step 3 →</b> Matching begins</span></div>
+        </div>
+
+        <div class="lajm-actions">
+          <button class="lajm-btn lajm-btn-primary" id="lajmGoConfirm">Confirm Profile →</button>
+          <button class="lajm-btn lajm-btn-ghost" id="lajmReturnHome">Return Home</button>
+        </div>
+      </div>
+
+      <!-- Screen 2 exact wording -->
+      <div id="lajmScreen2" class="lajm-screen">
+        <h2 class="lajm-flow-title">Confirm Your Profile</h2>
+        <p class="lajm-flow-sub">
+          To activate your application and be added to the active matching pool,
+          please confirm your profile with the $18 application confirmation fee.
+        </p>
+
+        <div class="lajm-actions">
+          <button class="lajm-btn lajm-btn-primary" id="lajmOpenZelle">Confirm via Zelle</button>
+          <button class="lajm-btn lajm-btn-ghost" id="lajmOpenStripe">Pay via Stripe</button>
+          <button class="lajm-btn lajm-btn-ghost" id="lajmBack1">← Back</button>
+        </div>
+
+        <p class="lajm-muted" style="margin:14px 0 0">Primary button = Zelle<br>Secondary = Stripe.</p>
+
+        <p class="lajm-muted" style="margin:10px 0 0">Profiles are activated after confirmation to prevent spam and keep the pool curated.</p>
+      </div>
+
+      <!-- Screen 3 exact wording -->
+      <div id="lajmScreen3" class="lajm-screen">
+        <h2 class="lajm-flow-title">Confirmed</h2>
+        <p class="lajm-flow-sub">
+          Your application has been confirmed.
+          <br><br>
+          Our team reviews profiles continuously and introduces strong matches based on compatibility, values, and intent.
+          <br><br>
+          If selected for an introduction, you will receive an email with next steps.
+        </p>
+
+        <div class="lajm-actions">
+          <button class="lajm-btn lajm-btn-primary" id="lajmDone">Done</button>
+          <button class="lajm-btn lajm-btn-ghost" id="lajmCopySupport">Copy support email</button>
+        </div>
+
+        <p class="lajm-muted" style="margin:14px 0 0">Support: <span id="lajmSupportEmail">LAMatchToday@gmail.com</span></p>
+      </div>
+
+    </div>
+  `;
+
+  document.body.insertBefore(wrap, document.body.firstChild);
+
+  function show(screen){
+    ["lajmScreen1","lajmScreen2","lajmScreen3"].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.classList.toggle("active", id === screen);
+    });
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function toast(msg){
+    const t = document.getElementById("lajmToast");
+    if(!t) return;
+    t.textContent = msg || "Copied.";
+    t.style.display = "block";
+    clearTimeout(window.__lajmToastTimer);
+    window.__lajmToastTimer = setTimeout(()=>{ t.style.display="none"; }, 1400);
+  }
+
+  // Modal helpers
+  const modal = document.getElementById("lajmPayModal");
+  function openModal(){
+    if(!modal) return;
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden","false");
+  }
+  function closeModal(){
+    if(!modal) return;
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden","true");
+  }
+
+  // Wire screen nav
+  document.getElementById("lajmGoConfirm")?.addEventListener("click", ()=>show("lajmScreen2"));
+  document.getElementById("lajmBack1")?.addEventListener("click", ()=>show("lajmScreen1"));
+
+  // Screen 2 buttons per screenshot wording
+  document.getElementById("lajmOpenZelle")?.addEventListener("click", openModal);
+  document.getElementById("lajmOpenStripe")?.addEventListener("click", openModal);
+
+  // Modal buttons
+  document.getElementById("lajmCloseModal")?.addEventListener("click", closeModal);
+  modal?.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
+
+  document.getElementById("lajmCopyZelle")?.addEventListener("click", async ()=>{
+    const email = document.getElementById("lajmZelleEmail")?.textContent?.trim() || "Adlewis1606@gmail.com";
+    try{ await navigator.clipboard.writeText(email); toast("Zelle email copied."); }
+    catch(e){ toast("Copy not supported."); }
+  });
+
+  // Stripe placeholder. When you send the link, replace this constant.
+  const STRIPE_LINK = "https://buy.stripe.com/14A00i7X0b0E6763ri3Ru00";
+  const stripeBtn = document.getElementById("lajmStripeBtn");
+  if(stripeBtn){
+    if(STRIPE_LINK === "https://buy.stripe.com/14A00i7X0b0E6763ri3Ru00"){
+      stripeBtn.style.opacity = "0.55";
+      stripeBtn.style.pointerEvents = "none";
+    } else {
+      stripeBtn.textContent = "Open Stripe";
+      stripeBtn.style.opacity = "1";
+      stripeBtn.style.pointerEvents = "auto";
+      stripeBtn.href = STRIPE_LINK;
+    }
+  }
+
+  document.getElementById("lajmPaidContinue")?.addEventListener("click", ()=>{
+    try{ localStorage.setItem("lajm_confirmed_v1", JSON.stringify({at: new Date().toISOString()})); }catch(e){}
+    closeModal();
+    show("lajmScreen3");
+  });
+
+  document.getElementById("lajmDone")?.addEventListener("click", ()=>{
+    const url = new URL(window.location.href);
+    url.searchParams.delete("submitted");
+    window.location.href = url.toString();
+  });
+
+  document.getElementById("lajmCopySupport")?.addEventListener("click", async ()=>{
+    const support = document.getElementById("lajmSupportEmail")?.textContent?.trim() || "LAMatchToday@gmail.com";
+    try{ await navigator.clipboard.writeText(support); toast("Support email copied."); }
+    catch(e){ toast("Copy not supported."); }
+  });
+
+  document.getElementById("lajmReturnHome")?.addEventListener("click", ()=>{
+    const url = new URL(window.location.href);
+    url.searchParams.delete("submitted");
+    window.location.href = url.toString();
+  });
+
+})();
+</script>
+<!-- ====================== /LA JEWISH MATCH: POST-SUBMIT FLOW ====================== -->
+
 </body>
 </html>
